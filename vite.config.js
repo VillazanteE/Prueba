@@ -3,10 +3,10 @@ import react, { reactCompilerPreset } from '@vitejs/plugin-react'
 import babel from '@rolldown/plugin-babel'
 
 // https://vite.dev/config/
-export default defineConfig({
-  base: '/Prueba/',
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? '/' : '/',
   plugins: [
     react(),
     babel({ presets: [reactCompilerPreset()] })
   ],
-})
+}))
